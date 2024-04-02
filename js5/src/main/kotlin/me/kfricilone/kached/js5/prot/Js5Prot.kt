@@ -1,0 +1,33 @@
+/*
+ * Copyright (c) 2022 Kyle Fricilone (https://kfricilone.me)
+ *
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ */
+
+package me.kfricilone.kached.js5.prot
+
+/**
+ * Created by Kyle Fricilone on Aug 26, 2021.
+ */
+@Suppress("MagicNumber")
+public sealed class Js5Prot(public val opcode: Int) {
+    public data object FileRequest : Js5Prot(0)
+
+    public data object PriorityFileRequest : Js5Prot(1)
+
+    public data object LoggedInState : Js5Prot(2)
+
+    public data object LoggedOutState : Js5Prot(3)
+
+    public data object EncryptionKeyUpdate : Js5Prot(4)
+}
