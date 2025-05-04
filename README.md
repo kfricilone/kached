@@ -12,7 +12,7 @@ Kached is a Osrs cache downloader written in Kotlin.
 
 ## Building
 
-Run `./gradlew` to download the dependencies, build the code, run the unit tests
+Run `./gradlew check` to download the dependencies, build the code, run the unit tests
 and package it.
 
 ## License

@@ -16,9 +16,9 @@
 
 package me.kfricilone.kached
 
-import com.github.michaelbull.logging.InlineLogger
 import com.github.michaelbull.retry.policy.constantDelay
 import com.github.michaelbull.retry.retry
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
@@ -111,7 +111,8 @@ public class Js5Downloader(
         masterIndex: Js5MasterIndex,
     ): Map<Int, Js5Index> {
         logger.info { "Downloading archive indexes" }
-        return masterIndex.entries.withIndex()
+        return masterIndex.entries
+            .withIndex()
             .associateBy({ it.index }, { it.value })
             .filterValues { it.version != 0 && it.checksum != 0 }
             .mapValues { (index, _) ->
@@ -132,7 +133,8 @@ public class Js5Downloader(
 
         logger.info { "Finding master index changes" }
         val diskIndexes =
-            masterIndex.entries.withIndex()
+            masterIndex.entries
+                .withIndex()
                 .associateBy({ it.index }, { it.value })
                 .filterValues { it.version != 0 && it.checksum != 0 }
                 .mapValues { (archive, js5index) ->
@@ -259,15 +261,19 @@ public class Js5Downloader(
     }
 
     private suspend fun fetchRevision(): Int =
-        client.get(CONFIG).bodyAsText(ISO_8859_1)
-            .lines().firstOrNull { it.startsWith(PARAM) }
-            ?.replace(PARAM, "")?.toInt() ?: DEFAULT_REVISION
+        client
+            .get(CONFIG)
+            .bodyAsText(ISO_8859_1)
+            .lines()
+            .firstOrNull { it.startsWith(PARAM) }
+            ?.replace(PARAM, "")
+            ?.toInt() ?: DEFAULT_REVISION
 
     private companion object {
-        private val logger = InlineLogger()
+        private val logger = KotlinLogging.logger {}
         private const val HOST = "oldschool1.runescape.com"
         private const val HOST_TEMPLATE = "oldschool%d.runescape.com"
-        private const val CONFIG = "http://oldschool.runescape.com/jav_config.ws"
+        private const val CONFIG = "https://oldschool.runescape.com/jav_config.ws"
         private const val PARAM = "param=25="
         private const val RETRY_DELAY = 500L
         private const val DEFAULT_REVISION = 217

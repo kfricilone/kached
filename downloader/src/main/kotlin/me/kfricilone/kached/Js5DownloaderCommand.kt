@@ -17,6 +17,7 @@
 package me.kfricilone.kached
 
 import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.flag
@@ -31,7 +32,7 @@ import java.nio.file.Path
  */
 public fun main(args: Array<String>): Unit = Js5DownloaderCommand().main(args)
 
-public class Js5DownloaderCommand : CliktCommand(printHelpOnEmptyArgs = true) {
+public class Js5DownloaderCommand : CliktCommand() {
     private val versions: Boolean by option(
         "-v",
         "--versions",

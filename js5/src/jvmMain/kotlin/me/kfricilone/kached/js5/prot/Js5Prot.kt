@@ -20,6 +20,16 @@ package me.kfricilone.kached.js5.prot
  * Created by Kyle Fricilone on Aug 26, 2021.
  */
 @Suppress("MagicNumber")
-public sealed class LoginProt(public val opcode: Int) {
-    public data object InitJs5RemoteConnection : LoginProt(15)
+public sealed class Js5Prot(
+    public val opcode: Int,
+) {
+    public data object FileRequest : Js5Prot(0)
+
+    public data object PriorityFileRequest : Js5Prot(1)
+
+    public data object LoggedInState : Js5Prot(2)
+
+    public data object LoggedOutState : Js5Prot(3)
+
+    public data object EncryptionKeyUpdate : Js5Prot(4)
 }

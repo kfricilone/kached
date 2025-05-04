@@ -1,0 +1,125 @@
+public class me/kfricilone/kached/js5/Js5Connection : java/io/Closeable {
+	public static final field Companion Lme/kfricilone/kached/js5/Js5Connection$Companion;
+	public fun <init> (Lio/ktor/network/sockets/Socket;)V
+	public fun close ()V
+	public final fun encryption (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun request (IILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun response (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun state (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class me/kfricilone/kached/js5/Js5Connection$Companion {
+	public final fun open (Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class me/kfricilone/kached/js5/file/FileRequest {
+	public fun <init> (II)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun copy (II)Lme/kfricilone/kached/js5/file/FileRequest;
+	public static synthetic fun copy$default (Lme/kfricilone/kached/js5/file/FileRequest;IIILjava/lang/Object;)Lme/kfricilone/kached/js5/file/FileRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArchive ()I
+	public final fun getGroup ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/kfricilone/kached/js5/file/FileResponse {
+	public fun <init> (IILio/netty/buffer/ByteBuf;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()Lio/netty/buffer/ByteBuf;
+	public final fun copy (IILio/netty/buffer/ByteBuf;)Lme/kfricilone/kached/js5/file/FileResponse;
+	public static synthetic fun copy$default (Lme/kfricilone/kached/js5/file/FileResponse;IILio/netty/buffer/ByteBuf;ILjava/lang/Object;)Lme/kfricilone/kached/js5/file/FileResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArchive ()I
+	public final fun getBuf ()Lio/netty/buffer/ByteBuf;
+	public final fun getGroup ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class me/kfricilone/kached/js5/prot/Js5Prot {
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getOpcode ()I
+}
+
+public final class me/kfricilone/kached/js5/prot/Js5Prot$EncryptionKeyUpdate : me/kfricilone/kached/js5/prot/Js5Prot {
+	public static final field INSTANCE Lme/kfricilone/kached/js5/prot/Js5Prot$EncryptionKeyUpdate;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/kfricilone/kached/js5/prot/Js5Prot$FileRequest : me/kfricilone/kached/js5/prot/Js5Prot {
+	public static final field INSTANCE Lme/kfricilone/kached/js5/prot/Js5Prot$FileRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/kfricilone/kached/js5/prot/Js5Prot$LoggedInState : me/kfricilone/kached/js5/prot/Js5Prot {
+	public static final field INSTANCE Lme/kfricilone/kached/js5/prot/Js5Prot$LoggedInState;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/kfricilone/kached/js5/prot/Js5Prot$LoggedOutState : me/kfricilone/kached/js5/prot/Js5Prot {
+	public static final field INSTANCE Lme/kfricilone/kached/js5/prot/Js5Prot$LoggedOutState;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/kfricilone/kached/js5/prot/Js5Prot$PriorityFileRequest : me/kfricilone/kached/js5/prot/Js5Prot {
+	public static final field INSTANCE Lme/kfricilone/kached/js5/prot/Js5Prot$PriorityFileRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class me/kfricilone/kached/js5/prot/LoginProt {
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getOpcode ()I
+}
+
+public final class me/kfricilone/kached/js5/prot/LoginProt$InitJs5RemoteConnection : me/kfricilone/kached/js5/prot/LoginProt {
+	public static final field INSTANCE Lme/kfricilone/kached/js5/prot/LoginProt$InitJs5RemoteConnection;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/kfricilone/kached/js5/store/Js5Store : java/io/Closeable {
+	public static final field Companion Lme/kfricilone/kached/js5/store/Js5Store$Companion;
+	public fun <init> (Lme/kfricilone/kached/js5/Js5Connection;)V
+	public fun close ()V
+	public final fun read (IILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class me/kfricilone/kached/js5/store/Js5Store$Companion {
+	public final fun open (Lme/kfricilone/kached/js5/Js5Connection;)Lme/kfricilone/kached/js5/store/Js5Store;
+}
+
+public final class me/kfricilone/kached/js5/util/BytesExtKt {
+	public static final fun buildBytes (Lio/netty/buffer/ByteBufAllocator;ILkotlin/jvm/functions/Function1;)Lio/netty/buffer/ByteBuf;
+	public static synthetic fun buildBytes$default (Lio/netty/buffer/ByteBufAllocator;ILkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lio/netty/buffer/ByteBuf;
+	public static final fun readBytes (Lio/ktor/utils/io/ByteReadChannel;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun readUnsignedByte (Lio/ktor/utils/io/ByteReadChannel;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun readUnsignedShort (Lio/ktor/utils/io/ByteReadChannel;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun writeAndFlush (Lio/ktor/utils/io/ByteWriteChannel;Lio/netty/buffer/ByteBuf;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class me/kfricilone/kached/js5/worker/Js5Worker : java/io/Closeable {
+	public static final field Companion Lme/kfricilone/kached/js5/worker/Js5Worker$Companion;
+	public fun <init> (Lme/kfricilone/kached/js5/Js5Connection;Lkotlinx/coroutines/channels/Channel;Lkotlinx/coroutines/channels/Channel;)V
+	public fun close ()V
+	public final fun launch (Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class me/kfricilone/kached/js5/worker/Js5Worker$Companion {
+	public final fun open (Lme/kfricilone/kached/js5/Js5Connection;Lkotlinx/coroutines/channels/Channel;Lkotlinx/coroutines/channels/Channel;)Lme/kfricilone/kached/js5/worker/Js5Worker;
+}
+

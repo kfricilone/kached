@@ -1,32 +1,38 @@
 [versions]
-clikt = "4.3.0"
-coroutines = "1.8.0"
-dependencies = "0.51.0"
+clikt = "5.0.3"
+compatibility = "0.17.0"
+coroutines = "1.10.2"
+dependencies = "0.52.0"
 detekt = "1.23.6"
-dokka = "1.9.20"
-gradle = "8.7"
-inline = "1.0.6"
-kotlin = "1.9.23"
-kotlinter = "4.3.0"
+dokka = "2.0.0"
+gradle = "8.14"
+java = "21"
+kotlin = "2.1.20"
+kotlinter = "5.0.1"
 kover = "0.7.6"
-ktor = "2.3.9"
-logback = "1.5.3"
+ktor = "3.1.2"
+logback = "1.5.18"
+logging = "7.0.7"
 openrs2 = "0.1.0-SNAPSHOT"
+publisher = "1.9.23-dev-45"
 result = "1.1.16"
-retry = "2.0.0"
-serialization = "1.3.3"
+retry = "2.0.1"
 
 [plugins]
+binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "compatibility" }
 dependencies = { id = "com.github.ben-manes.versions", version.ref = "dependencies" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-libs-publisher = { id = "org.jetbrains.kotlin.libs.publisher", version.ref = "publisher" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 
 [libraries]
 clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
-kotlin-inline-logger = { module = "com.michael-bull.kotlin-inline-logger:kotlin-inline-logger", version.ref = "inline" }
+kotlin-logging = { module = "io.github.oshai:kotlin-logging", version.ref = "logging" }
 kotlin-result = { module = "com.michael-bull.kotlin-result:kotlin-result", version.ref = "result" }
 kotlin-retry = { module = "com.michael-bull.kotlin-retry:kotlin-retry", version.ref = "retry" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }

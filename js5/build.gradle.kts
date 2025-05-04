@@ -1,24 +1,27 @@
 plugins {
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.kover)
-    alias(libs.plugins.kotlinter)
-    alias(libs.plugins.detekt)
-    alias(libs.plugins.dokka)
-    `maven-publish`
+    id("library-conventions")
 }
 
-dependencies {
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.openrs2.buffer)
-    implementation(libs.openrs2.util)
-    implementation(libs.ktor.network)
-    implementation(libs.kotlin.inline.logger)
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            from(components["java"])
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.ktor.network)
+            }
         }
+        jvmMain {
+            dependencies {
+                implementation(libs.openrs2.buffer)
+                implementation(libs.openrs2.util)
+            }
+        }
+    }
+}
+
+kotlinPublications {
+    publication {
+        publicationName.set("js5")
+        description.set("Osrs Js5 protocol workers")
     }
 }

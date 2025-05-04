@@ -16,12 +16,13 @@
 
 package me.kfricilone.kached.js5
 
-import com.github.michaelbull.logging.InlineLogger
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.network.selector.SelectorManager
 import io.ktor.network.sockets.InetSocketAddress
 import io.ktor.network.sockets.Socket
 import io.ktor.network.sockets.aSocket
 import io.ktor.network.sockets.connection
+import io.ktor.utils.io.readInt
 import kotlinx.coroutines.Dispatchers
 import me.kfricilone.kached.js5.file.FileResponse
 import me.kfricilone.kached.js5.prot.Js5Prot
@@ -44,9 +45,10 @@ public open class Js5Connection(
 
     private suspend fun connect(revision: Int) {
         val buf =
-            buildBytes(capacity = 5) {
+            buildBytes(capacity = 21) {
                 writeByte(LoginProt.InitJs5RemoteConnection.opcode)
                 writeInt(revision)
+                repeat(4) { writeInt(0) }
             }
 
         buf.use { connection.output.writeAndFlush(it) }
@@ -135,7 +137,7 @@ public open class Js5Connection(
     }
 
     public companion object {
-        private val logger = InlineLogger()
+        private val logger = KotlinLogging.logger {}
 
         private const val ARCHIVESET = 255
 
@@ -157,7 +159,8 @@ public open class Js5Connection(
             revision: Int,
         ): Js5Connection {
             val socket =
-                aSocket(SelectorManager(Dispatchers.IO)).tcp()
+                aSocket(SelectorManager(Dispatchers.IO))
+                    .tcp()
                     .connect(InetSocketAddress(host, PORT))
 
             return Js5Connection(socket).apply {
